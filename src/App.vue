@@ -1,5 +1,6 @@
 <template>
-    <div id="app">
+    <div id="MicroApplicationRoot">
+        MicroApplicationRoot主应用
         <router-view />
         <div id="container"></div>
     </div>
@@ -19,7 +20,7 @@ body{
     height: 100%;
     box-sizing: border-box;
 }
-#app {
+#MicroApplicationRoot {
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -27,5 +28,8 @@ body{
     font-size: 14px;
     overflow-x: hidden;
     margin: 0 auto;
+}
+#container{
+    height: 100vh;
 }
 </style>

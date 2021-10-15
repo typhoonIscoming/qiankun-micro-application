@@ -10,7 +10,7 @@ import App from './App.vue'
 new Vue({
     router,
     render: h => h(App)
-}).$mount('#app')
+}).$mount('#MicroApplicationRoot')
 
 interface Fn{
     (string?:any): void;
@@ -21,9 +21,9 @@ registerMicroApps(
     [
         {
             name: 'vueApp',
-            entry: '//192.168.1.65:8081',
+            entry: 'http://192.168.1.118:8082',
             container: '#container',
-            activeRule: '/app-vue'
+            activeRule: '/microvue'
         }
     ],
     {
@@ -31,7 +31,9 @@ registerMicroApps(
         beforeMount: [(app) => { console.log('before mount', app) }],
     }
 )
-setDefaultMountApp('/app-vue')
+// setDefaultMountApp('/app-vue')
 start({
     prefetch: true, // 预加载
 })
+
+setDefaultMountApp('/microvue');

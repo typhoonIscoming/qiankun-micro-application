@@ -25,10 +25,10 @@ const routes = [
             whiteList: true,
         },
     },
-    {
-        path: '*',
-        redirect: '/signin',
-    },
+    // {
+    //     path: '*',
+    //     redirect: '/Home',
+    // },
 ];
 const router = new Router({
     mode: 'history',
