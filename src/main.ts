@@ -1,5 +1,10 @@
 import Vue from 'vue'
-import { registerMicroApps, start, LifeCycleFn, setDefaultMountApp } from 'qiankun'
+import {
+    registerMicroApps,
+    start,
+    LifeCycleFn,
+    setDefaultMountApp
+} from 'qiankun'
 
 import router from './router'
 import App from './App.vue'
@@ -12,28 +17,28 @@ new Vue({
     render: h => h(App)
 }).$mount('#MicroApplicationRoot')
 
-interface Fn{
-    (string?:any): void;
+interface Fn {
+    (string?: any): void
 }
 
-const Before: LifeCycleFn<any> = (): any => {};
+const Before: LifeCycleFn<any> = (): any => {}
 registerMicroApps(
     [
         {
             name: 'vueApp',
-            entry: 'http://192.168.1.118:8082',
+            entry: 'http://www.typhooniscoming.cn/home',
             container: '#container',
             activeRule: '/microvue'
         }
     ],
     {
         beforeLoad: Before,
-        beforeMount: [(app) => { console.log('before mount', app) }],
+        beforeMount: [
+            Before,
+        ]
     }
 )
-// setDefaultMountApp('/app-vue')
+setDefaultMountApp('/microvue')
 start({
     prefetch: true, // 预加载
 })
-
-setDefaultMountApp('/microvue');
