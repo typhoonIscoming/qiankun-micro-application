@@ -1,10 +1,5 @@
 import Vue from 'vue'
-import {
-    registerMicroApps,
-    start,
-    LifeCycleFn,
-    setDefaultMountApp
-} from 'qiankun'
+import { registerMicroApps, start, LifeCycleFn, setDefaultMountApp } from 'qiankun'
 
 import router from './router'
 import App from './App.vue'
