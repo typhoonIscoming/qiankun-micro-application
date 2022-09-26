@@ -21,19 +21,38 @@ registerMicroApps(
     [
         {
             name: 'vueApp',
-            entry: 'http://www.typhooniscoming.cn/home',
+            // entry: 'http://www.typhooniscoming.cn/home',
+            entry: 'http://127.0.0.1:5501/microApplication/microApp.html',
             container: '#container',
-            activeRule: '/microvue'
+            activeRule: '/subvue'
         }
     ],
     {
-        beforeLoad: Before,
+        beforeLoad: (app) => {
+            console.log('before load app.name====>>>>>', app.name)
+            return Promise.resolve()
+        },
         beforeMount: [
-            Before,
+            app => {
+                console.log('[LifeCycle] before mount %c%s', 'color: green;', app)
+                return Promise.resolve()
+            },
+        ],
+        afterMount: [
+            app => {
+                console.log('[LifeCycle] after mount %c%s', 'color: green;', app.name)
+                return Promise.resolve()
+            }
+        ],
+        afterUnmount: [
+            app => {
+                console.log('[LifeCycle] after unmount %c%s', 'color: green;', app.name)
+                return Promise.resolve()
+            }
         ]
     }
 )
-setDefaultMountApp('/microvue')
+setDefaultMountApp('/subvue')
 start({
     prefetch: true, // 预加载
 })
