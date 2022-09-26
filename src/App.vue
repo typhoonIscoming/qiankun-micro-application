@@ -3,6 +3,7 @@
         MicroApplicationRoot主应用
         <router-view />
         <div id="container"></div>
+        <div id="box"></div>
     </div>
 </template>
 
@@ -30,6 +31,9 @@ body{
     margin: 0 auto;
 }
 #container{
-    height: 100vh;
+    height: fit-content;
+}
+#box{
+    min-height: 100px;
 }
 </style>
