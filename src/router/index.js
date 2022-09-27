@@ -25,6 +25,8 @@ const routes = [
             whiteList: true,
         },
     },
+    // 主应用设置通配路由配置之后，qiankun.js基于路由匹配子应用的方式会导致url是子应用时，主应用没有该url
+    // 的配置，就会重定向到/home路由
     // {
     //     path: '*',
     //     redirect: '/Home',

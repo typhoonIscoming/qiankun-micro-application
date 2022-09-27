@@ -1,8 +1,10 @@
 import Vue from 'vue'
-import { registerMicroApps, start, LifeCycleFn, setDefaultMountApp } from 'qiankun'
+import { registerMicroApps, start, LifeCycleFn, setDefaultMountApp, runAfterFirstMounted } from 'qiankun'
 
 import router from './router'
 import App from './App.vue'
+
+import microAppRoutes from './router/microAppRoutes';
 
 /**
  * 接入主应用
@@ -19,22 +21,7 @@ interface Fn {
 const Before: LifeCycleFn<any> = (): any => {}
 registerMicroApps(
     [
-        {
-            name: 'vueApp',
-            // entry: 'http://www.typhooniscoming.cn/home',
-            entry: 'http://127.0.0.1:5501/microApplication/microApp.html',
-            // entry: 'http://127.0.0.1:5501/macDialog.html',
-            container: '#container',
-            activeRule: '/subvue'
-        },
-        {
-            name: 'detail',
-            // entry: 'http://www.typhooniscoming.cn/home',
-            entry: 'http://127.0.0.1:5501/microApplication/detail.html',
-            // entry: 'http://127.0.0.1:5501/macDialog.html',
-            container: '#box',
-            activeRule: '/subDetail'
-        },
+        ...microAppRoutes,
     ],
     {
         beforeLoad: (app) => {
@@ -64,4 +51,8 @@ registerMicroApps(
 setDefaultMountApp('/subvue')
 start({
     prefetch: true, // 预加载
+});
+
+runAfterFirstMounted(() => {
+    console.log('第一个微应用被调用啦')
 })

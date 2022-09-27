@@ -1,6 +1,8 @@
 <template>
     <div id="MicroApplicationRoot">
         MicroApplicationRoot主应用
+        <button @click="handleRoute('vueApp')">home</button>
+        <button @click="handleRoute('detail')">detail</button>
         <router-view />
         <div id="container"></div>
         <div id="box"></div>
@@ -8,8 +10,22 @@
 </template>
 
 <script>
+import { loadMicroApp } from 'qiankun';
+import microAppRoutes from '@/router/microAppRoutes';
+
 export default {
     name: 'App',
+    methods: {
+        handleRoute(route) {
+            console.log('route', route)
+            const item = microAppRoutes.find(i => i.name === route);
+            if (item) {
+                loadMicroApp(item, {
+                    singular: false,
+                })
+            }
+        },
+    },
 }
 </script>
 
