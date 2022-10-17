@@ -1,20 +1,27 @@
 <template>
     <div id="MicroApplicationRoot">
-        MicroApplicationRoot主应用
-        <button @click="handleRoute('vueApp')">home</button>
-        <button @click="handleRoute('detail')">detail</button>
-        <router-view />
-        <div id="container"></div>
-        <div id="box"></div>
+        <div class="MainWrapper">
+            MicroApplicationRoot主应用
+            <button @click="handleRoute('vueApp')">home</button>
+            <button @click="handleRoute('detail')">detail</button>
+            <router-view />
+            <div id="container"></div>
+            <div id="box"></div>
+        </div>
+        <Footer />
     </div>
 </template>
 
 <script>
 import { loadMicroApp } from 'qiankun';
 import microAppRoutes from '@/router/microAppRoutes';
+import Footer from '@/components/footer';
 
 export default {
     name: 'App',
+    components: {
+        Footer,
+    },
     methods: {
         handleRoute(route) {
             console.log('route', route)
@@ -36,6 +43,7 @@ body{
     -webkit-text-size-adjust: 100% !important;
     height: 100%;
     box-sizing: border-box;
+    font-size: 14px;
 }
 #MicroApplicationRoot {
     position: relative;
@@ -51,5 +59,8 @@ body{
 }
 #box{
     min-height: 100px;
+}
+.MainWrapper{
+    height: 100vh;
 }
 </style>

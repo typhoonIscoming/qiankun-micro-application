@@ -51,6 +51,7 @@ registerMicroApps(
 setDefaultMountApp('/subvue')
 start({
     prefetch: true, // 预加载
+    excludeAssetFilter: () => true
 });
 
 runAfterFirstMounted(() => {

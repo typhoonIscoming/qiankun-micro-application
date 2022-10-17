@@ -34,7 +34,7 @@ const routes = [
 ];
 const router = new Router({
     mode: 'history',
-    base: (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') ? process.env.VUE_APP_BASE_PATH : '/',
+    base: '/',
     routes,
 });
 
