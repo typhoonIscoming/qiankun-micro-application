@@ -2,11 +2,10 @@
     <div id="MicroApplicationRoot">
         <div class="MainWrapper">
             MicroApplicationRoot主应用
-            <button @click="handleRoute('vueApp')">home</button>
-            <button @click="handleRoute('detail')">detail</button>
+            <router-link to="/home" tag="span">home</router-link>
+            <router-link to="/main" tag="span">Main</router-link>
             <router-view />
             <div id="container"></div>
-            <div id="box"></div>
         </div>
         <Footer />
     </div>

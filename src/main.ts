@@ -1,10 +1,15 @@
 import Vue from 'vue'
-import { registerMicroApps, start, LifeCycleFn, setDefaultMountApp, runAfterFirstMounted } from 'qiankun'
+import {
+    registerMicroApps, start, LifeCycleFn, setDefaultMountApp, runAfterFirstMounted,
+} from 'qiankun'
 
 import router from './router'
 import App from './App.vue'
 
 import microAppRoutes from './router/microAppRoutes';
+
+// 引入全局qiankun数据
+import './utils/globalState';
 
 /**
  * 接入主应用
@@ -17,7 +22,6 @@ new Vue({
 interface Fn {
     (string?: any): void
 }
-
 const Before: LifeCycleFn<any> = (): any => {}
 registerMicroApps(
     [
@@ -48,10 +52,13 @@ registerMicroApps(
         ]
     }
 )
-setDefaultMountApp('/subvue')
+setDefaultMountApp('/subDetail')
 start({
-    prefetch: true, // 预加载
-    excludeAssetFilter: () => true
+    prefetch: false, // 预加载
+    excludeAssetFilter: (src) => {
+        console.log('src', src)
+        return true
+    },
 });
 
 runAfterFirstMounted(() => {
